@@ -2,6 +2,7 @@ import Button from "./Button.js";
 
 export default function ProductDetailInfo(props) {
   const {product, onProductAdd} = props;
+  console.log('test');
   return (
     <>
       <p>

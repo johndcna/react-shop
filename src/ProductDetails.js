@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
-import {NavLink, Routes, Route, useParams, useMatch} from "react-router-dom";
+import {NavLink, Routes, Route, useParams,useLocation } from "react-router-dom";
 import useFetch from "./useFetch.js";
 import ProductDetailInfo from "./ProductDetailInfo.js";
 import ProductDetailNutrition from "./ProductDetailNutrition.js";
 import ProductDetailStorage from "./ProductDetailStorage.js";
 
 export default function ProductDetails(props) {
+  const params = useParams();
+  const pathname = useLocation().pathname;
+
   const [product, setProduct] = useState({});
   const { get } = useFetch("https://react-tutorial-demo.firebaseio.com/");
-  const params = useParams();
-  const match = useMatch();
-
   useEffect(() => {
     get(`productinfo/id${params.id}.json`)
       .then((data) => {
@@ -35,42 +35,51 @@ export default function ProductDetails(props) {
         <div className="tabs">
           <ul>
             <li>
-              <NavLink exact activeClassName="tab-active" to={match.url}>
+              <NavLink
+                className={!!pathname.match(/\d$/) ? "tab-active" : ""}
+                to={""}
+              >
                 Details
               </NavLink>
             </li>
             <li>
               <NavLink
-                exact
-                activeClassName="tab-active"
-                to={match.url + "/nutrition"}
+                className={pathname.includes("/nutrition") ? "tab-active" : ""}
+                to={"nutrition"}
               >
                 Nutrition
               </NavLink>
             </li>
             <li>
               <NavLink
-                exact
-                activeClassName="tab-active"
-                to={match.url + "/storage"}
+                className={pathname.includes("/storage") ? "tab-active" : ""}
+                to={"storage"}
               >
                 Storage
               </NavLink>
             </li>
           </ul>
         </div>
-        <Routes >
-          <Route exact path={match.path}>
-            <ProductDetailInfo product={product} onProductAdd={props.onProductAdd} />
-          </Route>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <ProductDetailInfo
+                onProductAdd={props.onProductAdd}
+                product={product}
+              />
+            }
+          ></Route>
 
-          <Route path={match.path + "/nutrition"}>
-            <ProductDetailNutrition nutrition={product.nutrition} />
-          </Route>
+          <Route
+            path={"nutrition"}
+            element={<ProductDetailNutrition nutrition={product.nutrition} />}
+          ></Route>
 
-          <Route path={match.path + "/storage"}>
-            <ProductDetailStorage storage={product.storage} />
-          </Route>
+          <Route
+            path={"storage"}
+            element={<ProductDetailStorage storage={product.storage} />}
+          ></Route>
         </Routes>
       </div>
     </div>

@@ -60,7 +60,7 @@ function App() {
               onProductAdd={handleProductAdd}
               onProductDelete={handleProductDelete}
             />} />
-          <Route  path="/products/:id" element={ <ProductDetails onProductAdd={handleProductAdd} />} /> 
+          <Route path="/products/:id/*" element={ <ProductDetails onProductAdd={handleProductAdd} />} /> 
           <Route exact path="cart" element={ <Cart cart={cart} />} />
         
       
