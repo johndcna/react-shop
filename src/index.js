@@ -8,6 +8,8 @@ import About from "./About.js";
 import Products from "./Products.js";
 import ProductDetails from "./ProductDetails.js";
 import Cart from "./Cart.js";
+import EditorPage from './components/editor/EditorPage.js';
+
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -62,6 +64,8 @@ function App() {
             />} />
           <Route path="/products/:id/*" element={ <ProductDetails onProductAdd={handleProductAdd} />} /> 
           <Route exact path="cart" element={ <Cart cart={cart} />} />
+          <Route exact path="/editors" element={<EditorPage />} /> {/* Add Editor route */}
+
         
       
     </Routes>

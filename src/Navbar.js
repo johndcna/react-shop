@@ -27,6 +27,13 @@ export default function Navbar(props) {
             Products
           </NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink className="active" to="/editors">
+            Editors
+          </NavLink>
+        </li>
+        <li></li>
+
         <li>
           <NavLink to="/cart" className="nav-item nav-cart btn btn-accent">
             Cart ({cartCount})
