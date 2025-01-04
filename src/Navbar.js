@@ -13,12 +13,12 @@ export default function Navbar(props) {
       </NavLink>
       <ul>
         <li className="nav-item">
-          <NavLink exact className="active" to="/">
+          <NavLink className="active" to="/">
             Home
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink exact className="active" to="/about">
+          <NavLink className="active" to="/about">
             About us
           </NavLink>
         </li>
@@ -28,11 +28,10 @@ export default function Navbar(props) {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="active" to="/editors">
-            Editors
+          <NavLink className="active" to="/owners">
+            Owners
           </NavLink>
         </li>
-        <li></li>
 
         <li>
           <NavLink to="/cart" className="nav-item nav-cart btn btn-accent">

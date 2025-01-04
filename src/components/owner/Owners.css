@@ -1,0 +1,41 @@
+/* Owners component styles */
+.owners-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .owner-box {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .owner-info {
+    margin-bottom: 15px;
+  }
+  
+  .owner-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .owner-box button {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+  
+  .owner-box button.outline {
+    border: 1px solid #007bff;
+    color: #007bff;
+    background-color: transparent;
+  }
+  
+  .owner-box button.outline:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
